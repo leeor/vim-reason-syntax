@@ -83,7 +83,7 @@ syn match     reasonTypeDefUnaryFunctionArgumentModuleRef "\<\u\%(\w\|'\)* *\."h
 syn region    reasonTypeDefUnaryFunctionArgumentTypeArgs start="(" end=")"  contained display skipwhite skipnl contains=reasonTypeAliasDefModuleRef,reasonTypeAliasDef nextgroup=reasonFunctionTypeArrowCharacter
 
 " function definition
-syn match     reasonFunctionDef /\%((\%(\_s\|\w\|[~.,=?():>]\)*)\%(\_s*:\_s*.\+\)\=\_s*=>\)\@=/  contained display skipwhite skipnl nextgroup=reasonFunctionArguments
+syn match     reasonFunctionDef /\%((\%(\_s\|\w\|[~'`.,=?():>]\)*)\%(\_s*:\_s*.\+\)\=\_s*=>\)\@=/  contained display skipwhite skipnl nextgroup=reasonFunctionArguments
 syn region    reasonFunctionArguments start="(" end=")"       contained display skipwhite skipnl contains=reasonArgument,reasonLabeledArgument,reasonFunctionDef nextgroup=reasonArrowCharacter,reasonFunctionDefReturnTypeSeparator
 syn match     reasonArgument "\%(\l\|_\)\%(\w\|'\)*"            contained display skipwhite skipnl nextgroup=reasonArgumentSeparator,reasonArgumentTypeDecl
 syn match     reasonLabeledArgument "\~\%(\l\|_\)\%(\w\|'\)*"   contained display skipwhite skipnl nextgroup=reasonArgumentPunning,reasonArgumentSeparator,reasonLabeledOptionalArgument,reasonArgumentTypeDecl
