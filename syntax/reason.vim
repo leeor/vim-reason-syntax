@@ -104,6 +104,7 @@ syn match     reasonConstructor  "`\w\%(\w\|'\)*\>" display
 "syn match     reasonModPath  /\<\u\%(\w\|\.\)*\>/ display
 syn match     reasonModPath  "\<\u\%(\w\|'\)*\_s*\."he=e-1 display
 syn match     reasonModPath  "\%(\<include\s\+\)\@<=\u\%(\w\|\.\)*" display
+syn match     reasonModPath  "\%(\<open\s\+\)\@<=\u\%(\w\|\.\)*" display
 
 syn keyword   reasonExternalKeyword external                                   skipwhite skipnl nextgroup=reasonExternalDecl
 syn match     reasonExternalDecl /\<\%(\l\|_\)\%(\k\|'\)*\>/ contained display skipwhite skipnl nextgroup=reasonExternalSeparator
@@ -120,10 +121,6 @@ syn region    bsDirective start="\[\%(@\|%\)" end="]"       display skipwhite sk
 syn region reasonMacroRepeat matchgroup=reasonMacroRepeatDelimiters start="$(" end=")" contains=TOP nextgroup=reasonMacroRepeatCount
 syn match reasonMacroRepeatCount ".\?[*+]" contained
 syn match reasonMacroVariable "$\w\+"
-
-" Things from the libstd v1 prelude (src/libstd/prelude/v1.rs) {{{2
-" This section is just straight transformation of the contents of the prelude,
-" to make it easy to update.
 
 " Reexported core operators {{{3
 syn keyword   reasonTrait       Copy Send Sized Sync
@@ -174,10 +171,6 @@ syn region    reasonString      start='b\?r\z(#*\)"' end='"\z1' contains=@Spell
 
 syn region    reasonMultilineString      start=+b{|+ skip=+\\\\\|\\"+ end=+|}+ contains=reasonEscape,reasonEscapeError,reasonStringContinuation
 syn region    reasonMultilineString      start=+{|+ end=+|}+ contains=reasonEscape,reasonEscapeUnicode,reasonEscapeError,reasonStringContinuation,@Spell
-
-syn region    reasonAttribute   start="#!\?\[" end="\]" contains=reasonString,reasonDerive
-" This list comes from src/libsyntax/ext/deriving/mod.rs
-" Some are deprecated (Encodable, Decodable) or to be removed after a new snapshot (Show).
 
 " Number literals
 syn match     reasonDecNumber   display "\<[0-9][0-9_]*\%([iu]\%(size\|8\|16\|32\|64\)\)\="
@@ -272,7 +265,6 @@ hi def link reasonAssert        Precondit
 hi def link reasonFailwith      PreCondit
 hi def link reasonType          Type
 hi def link reasonTodo          Todo
-hi def link reasonAttribute     PreProc
 hi def link reasonObsoleteStorage Error
 
 " keywords
