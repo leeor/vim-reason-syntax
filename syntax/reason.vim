@@ -16,7 +16,7 @@ syntax sync fromstart
 
 " Syntax definitions {{{1
 " Basic keywords {{{2
-syn keyword   reasonConditional try switch if else for while
+syn keyword   reasonConditional switch if else for while
 syn keyword   reasonOperator    as to downto
 syn match     reasonSemicolon   /;/ display
 
@@ -30,8 +30,11 @@ syn keyword   reasonModuleKeyword module     skipwhite nextgroup=reasonRecurseMo
 syn keyword   reasonModuleTypeKeyword type   contained skipwhite nextgroup=reasonRecurseModule,reasonModuleTypeName
 syn keyword   reasonRecurseModule rec nonrec skipwhite nextgroup=reasonModuleDeclName,reasonModuleTypeKeyword
 
-syn keyword   reasonStorage            let        skipwhite nextgroup=reasonRecurseIdentifier,reasonIdentifier,reasonIdentifierTuple
+syn keyword   reasonStorage            let        skipwhite nextgroup=reasonRecurseIdentifier,reasonIdentifier,reasonIdentifierTuple,reasonStorageExtension
 syn keyword   reasonRecurseIdentifier  rec nonrec skipwhite nextgroup=reasonIdentifier
+syn match     reasonStorageExtension /%\u\%(\w\|'\)*/hs=s+1 skipwhite nextgroup=reasonRecurseIdentifier,reasonIdentifier,reasonIdentifierTuple
+syn keyword   reasonTry                try        skipwhite nextgroup=reasonTryExtension
+syn match     reasonTryExtension /%\u\%(\w\|'\)*/hs=s+1
 
 syn keyword   reasonOpenKeyword   open skipwhite nextgroup=reasonModPath
 
@@ -315,6 +318,7 @@ hi def link reasonLazyKeyword reasonKeyword
 hi def link reasonSharingConstraintWith reasonKeyword
 hi def link reasonSharingConstraintType reasonKeyword
 hi def link reasonSharingConstraintSeparator reasonKeyword
+hi def link reasonTry reasonKeyword
 
 " operators
 hi def link reasonArgumentPunning reasonOperator
@@ -344,6 +348,8 @@ hi def link reasonModuleDeclName reasonModPath
 hi def link reasonModuleTypeName reasonModPath
 hi def link reasonSharingConstraintModuleType reasonModPath
 hi def link reasonFunctorArgumentType reasonModPath
+hi def link reasonStorageExtension reasonModPath
+hi def link reasonTryExtension reasonModPath
 
 " types
 hi def link reasonIdentifierType reasonType
