@@ -297,6 +297,7 @@ hi def link reasonObsoleteStorage Error
 
 " operators
 hi def link reasonArgumentPunning reasonOperator
+hi def link reasonArrowCharacter reasonOperator
 
 " keywords
 hi def link reasonRecurseType reasonKeyword
@@ -316,7 +317,6 @@ hi def link reasonTry reasonKeyword
 hi def link extensionPointName reasonKeyword
 
 " separators
-hi def link reasonArrowCharacter reasonSeparator
 hi def link reasonFunctionTypeArrowCharacter reasonSeparator
 hi def link reasonLabeledOptionalArgument reasonSeparator
 hi def link reasonExternalSeparator reasonSeparator
