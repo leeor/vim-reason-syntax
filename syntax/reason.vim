@@ -167,24 +167,11 @@ syn region reasonMacroRepeat matchgroup=reasonMacroRepeatDelimiters start="$(" e
 syn match reasonMacroRepeatCount ".\?[*+]" contained
 syn match reasonMacroVariable "$\w\+"
 
-" Reexported core operators {{{3
-syn keyword   reasonTrait       Copy Send Sized Sync
-syn keyword   reasonTrait       Drop Fn FnMut FnOnce
-
 " Reexported functions {{{3
 " There’s no point in highlighting these; when one writes drop( or drop::< it
 " gets the same highlighting anyway, and if someone writes `let drop = …;` we
 " don’t really want *that* drop to be highlighted.
 "syn keyword reasonFunction drop
-
-" Reexported types and traits {{{3
-syn keyword reasonTrait ToOwned
-syn keyword reasonTrait Clone
-syn keyword reasonTrait PartialEq PartialOrd Eq Ord
-syn keyword reasonTrait AsRef AsMut Into From
-syn keyword reasonTrait Default
-syn keyword reasonTrait Iterator Extend IntoIterator
-syn keyword reasonTrait DoubleEndedIterator ExactSizeIterator
 
 " Other syntax {{{2
 syn keyword   reasonSelf        self
@@ -275,11 +262,7 @@ hi def link reasonDecNumber       reasonNumber
 hi def link reasonHexNumber       reasonNumber
 hi def link reasonOctNumber       reasonNumber
 hi def link reasonBinNumber       reasonNumber
-hi def link reasonTrait           reasonType
 
-hi def link reasonMacroRepeatCount   reasonMacroRepeatDelimiters
-hi def link reasonMacroRepeatDelimiters   Macro
-hi def link reasonMacroVariable Define
 hi def link reasonEscape        Special
 hi def link reasonEscapeUnicode reasonEscape
 hi def link reasonEscapeError   Error
