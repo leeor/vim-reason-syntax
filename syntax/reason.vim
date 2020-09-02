@@ -98,7 +98,7 @@ syn region    reasonTypeDefUnaryFunctionArgumentTypeArgs start="(" end=")"  cont
 syn match     reasonFunctionDef /\%((\%(\_s\|\w\|[~'`.,=?():>]\)*)\%(\_s*:\_s*.\+\)\=\_s*=>\)\@=/  contained display skipwhite skipnl nextgroup=reasonFunctionArguments
 syn region    reasonFunctionArguments start="(" end=")"       contained display skipwhite skipnl contains=reasonArgument,reasonLabeledArgument,reasonFunctionDef nextgroup=reasonArrowCharacter,reasonFunctionDefReturnTypeSeparator
 syn match     reasonArgument "\%(\l\|_\)\%(\w\|'\)*"            contained display skipwhite skipnl nextgroup=reasonArgumentSeparator,reasonArgumentTypeDecl
-syn match     reasonLabeledArgument "\~\%(\l\|_\)\%(\w\|'\)*"   contained display skipwhite skipnl nextgroup=reasonArgumentPunning,reasonArgumentSeparator,reasonLabeledOptionalArgument,reasonArgumentTypeDecl
+syn match     reasonLabeledArgument "\~\%(\l\|_\)\%(\w\|'\)*"he=s+1   contained display skipwhite skipnl nextgroup=reasonArgumentPunning,reasonArgumentSeparator,reasonLabeledOptionalArgument,reasonArgumentTypeDecl
 syn match     reasonLabeledOptionalArgument /=?/              contained display skipwhite skipnl nextgroup=reasonArgumentSeparator
 syn keyword   reasonArgumentPunning as                        contained display skipwhite skipnl nextgroup=reasonArgumentAlias
 syn match     reasonArgumentAlias /\<\%(\l\|_\)\%(\k\|'\)*\>/ contained display skipwhite skipnl nextgroup=reasonArgumentTypeDecl,reasonArgumentSeparator
@@ -157,8 +157,9 @@ syn region    reasonExternalTypeDef start="." end="\%(=>\@!\)\@="    contained d
 " record field access
 syn match     reasonRecordFieldAccess /\%(\<\%(\l\|_\)\%(\k\|'\)*\>\.\)\@<=\<\%(\l\|_\)\%(\k\|'\)*\>/ display
 
-syn region    bsDirective start="\[\%(@\|%\)"rs=e-1 end="]"       display skipwhite skipnl contains=reasonMultilineString,reasonString,extensionPointName
+syn match     reasonOperator     "\%(|\]\|\[|\|\[\|\]\|$\|:\|?\|\~\|\.\|#\|@\|+\|-\|/\|*\|=\|\^\|&\||\|!\|>\|<\|%\)\+" display
 
+syn region    bsDirective start="\[\%(@\|%\)"rs=e-1 end="]"       display skipwhite skipnl contains=reasonMultilineString,reasonString,extensionPointName
 syn match     extensionPointName /\%(@\|%\)[a-zA-Z_.]\+/    display contained
 
 " {} are handled by reasonFoldBraces
@@ -182,7 +183,6 @@ syn keyword   reasonBoolean     true false
 " [:upper:] as it depends upon 'noignorecase'
 "syn match     reasonCapsIdent    display "[A-Z]\w\%(\w\)*"
 
-syn match     reasonOperator     "\%(|\]\|\[|\|\[\|\]\|$\|:\|?\|\~\|\.\|#\|@\|+\|-\|/\|*\|=\|\^\|&\||\|!\|>\|<\|%\)\+" display
 " This one isn't *quite* right, as we could have binary-& with a reference
 
 " This isn't actually correct; a closure with no arguments can be `|| { }`.
@@ -298,6 +298,8 @@ hi def link reasonObsoleteStorage Error
 " operators
 hi def link reasonArgumentPunning reasonOperator
 hi def link reasonArrowCharacter reasonOperator
+hi def link reasonFunctionTypeArrowCharacter reasonOperator
+hi def link reasonLabeledArgument reasonOperator
 
 " keywords
 hi def link reasonRecurseType reasonKeyword
@@ -317,7 +319,6 @@ hi def link reasonTry reasonKeyword
 hi def link extensionPointName reasonKeyword
 
 " separators
-hi def link reasonFunctionTypeArrowCharacter reasonSeparator
 hi def link reasonLabeledOptionalArgument reasonSeparator
 hi def link reasonExternalSeparator reasonSeparator
 hi def link reasonRecordFieldTypeSeparator reasonSeparator
