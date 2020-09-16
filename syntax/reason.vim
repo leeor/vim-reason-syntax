@@ -152,7 +152,7 @@ syn match     reasonModPath  "\%(\<open\s\+\)\@<=\u\%(\w\|\.\)*" display
 syn keyword   reasonExternalKeyword external                                   skipwhite skipnl nextgroup=reasonExternalDecl
 syn match     reasonExternalDecl /\<\%(\l\|_\)\%(\k\|'\)*\>/ contained display skipwhite skipnl nextgroup=reasonExternalSeparator
 syn match     reasonExternalSeparator /:/                    contained display skipwhite skipnl nextgroup=reasonExternalTypeDef
-syn region    reasonExternalTypeDef start="." end="\%(=>\@!\)\@="    contained display skipwhite skipnl contains=reasonTypeDefUnaryFunctionDef,reasonVariantDefRegion,reasonTypeDefRecord,reasonTypeDefVariantSeparator,reasonTypeDefUnaryFunctionDef,reasonTypeAliasDef,reasonTypeDefTuple,reasonTypeAliasDefModuleRef nextgroup=reasonOperator
+syn region    reasonExternalTypeDef start="." end="\%(;\|=\(>\)\@!\)\@="    contained display skipwhite skipnl contains=reasonTypeDefUnaryFunctionDef,reasonVariantDefRegion,reasonTypeDefRecord,reasonTypeDefVariantSeparator,reasonTypeDefUnaryFunctionDef,reasonTypeAliasDef,reasonTypeDefTuple,reasonTypeAliasDefModuleRef nextgroup=reasonOperator
 
 " record field access
 syn match     reasonRecordFieldAccess /\%(\<\%(\l\|_\)\%(\k\|'\)*\>\.\)\@<=\<\%(\l\|_\)\%(\k\|'\)*\>/ display
