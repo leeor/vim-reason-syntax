@@ -147,7 +147,7 @@ syn match     reasonModAlias  "\<\u\%(\w\|'\|\.\)*" display contained
 "syn match     reasonModPath  /\<\u\%(\w\|\.\)*\>/ display
 syn match     reasonModPath  "\<\u\%(\w\|'\)*\_s*\."he=e-1 display
 syn match     reasonModPath  "\%(\<include\s\+\)\@<=\u\%(\w\|\.\)*" display
-syn match     reasonModPath  "\%(\<open\s\+\)\@<=\u\%(\w\|\.\)*" display
+syn match     reasonModPath  "\%(\<open!\?\s\+\)\@<=\u\%(\w\|\.\)*" display
 
 syn keyword   reasonExternalKeyword external                                   skipwhite skipnl nextgroup=reasonExternalDecl
 syn match     reasonExternalDecl /\<\%(\l\|_\)\%(\k\|'\)*\>/ contained display skipwhite skipnl nextgroup=reasonExternalSeparator
