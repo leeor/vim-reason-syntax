@@ -30,7 +30,7 @@ syn keyword   reasonModuleKeyword module     skipwhite nextgroup=reasonRecurseMo
 syn keyword   reasonModuleTypeKeyword type   contained skipwhite nextgroup=reasonRecurseModule,reasonModuleTypeName
 syn keyword   reasonRecurseModule rec nonrec skipwhite nextgroup=reasonModuleDeclName,reasonModuleTypeKeyword
 
-syn match   reasonStorage            /\<let\%(\%(\$\|&\|\*\|+\|-\|\/\|<\|=\|>\|@\|^\||\|\.\|\!\)\+\w\+\)\?/        skipwhite nextgroup=reasonRecurseIdentifier,reasonIdentifier,reasonIdentifierTuple,reasonIdentifierDestructure,reasonStorageExtension
+syn match   reasonStorage            /\<let\%(\%(\$\|&\|\*\|+\|-\|\/\|<\|=\|>\|@\|^\||\|\.\|\!\|%\)\+\w\+\)\?/        skipwhite nextgroup=reasonRecurseIdentifier,reasonIdentifier,reasonIdentifierTuple,reasonIdentifierDestructure,reasonStorageExtension
 syn keyword   reasonRecurseIdentifier  rec nonrec skipwhite nextgroup=reasonIdentifier
 syn match     reasonStorageExtension /%\u\%(\w\|'\)*/hs=s+1 skipwhite nextgroup=reasonRecurseIdentifier,reasonIdentifier,reasonIdentifierTuple
 syn keyword   reasonTry                try        skipwhite nextgroup=reasonTryExtension
